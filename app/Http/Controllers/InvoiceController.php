@@ -51,7 +51,6 @@ class InvoiceController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            // Return validation errors to the view
             return back()->withErrors($validator)->withInput();
         }
 
@@ -152,7 +151,6 @@ class InvoiceController extends Controller
             $file = $invoiceDetails->image;
 
             if (Storage::exists($file)) {
-                // Delete the file from the storage
                 Storage::delete($file);
             }
             $invoiceDetails->delete();
